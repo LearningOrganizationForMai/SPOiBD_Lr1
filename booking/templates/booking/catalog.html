@@ -1,0 +1,21 @@
+{% extends "booking/base.html" %}
+{% block title %}Каталог{% endblock %}
+{% block content %}
+<div class="heading">
+  <div><h1>Каталог оборудования</h1><p>Доступность устройств сейчас · московское время</p></div>
+  {% if user.is_staff %}<a class="button" href="{% url 'admin:booking_equipment_add' %}">Добавить устройство</a>{% endif %}
+</div>
+<div class="cards">
+  {% for device in devices %}
+    <article class="card">
+      <span class="number">{{ device.inventory_number }}</span>
+      <h2>{{ device.name }}</h2>
+      {% if not device.is_active %}<span class="status off">Неактивно</span>
+      {% elif device.busy %}<span class="status busy">Занято сейчас</span>
+      {% else %}<span class="status">Свободно сейчас</span>{% endif %}
+      {% if device.is_active %}<a class="cardlink" href="{% url 'reservation_create' %}?equipment={{ device.pk }}">Выбрать время <span aria-hidden="true">→</span></a>
+      {% else %}<p class="muted foot">Бронирование закрыто</p>{% endif %}
+    </article>
+  {% empty %}<p>Оборудования пока нет.</p>{% endfor %}
+</div>
+{% endblock %}

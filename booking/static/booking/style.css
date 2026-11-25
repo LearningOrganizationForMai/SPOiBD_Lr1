@@ -1,0 +1,78 @@
+:root {
+  --ink: #182e32;
+  --teal: #075957;
+  --muted: #4f6564;
+  --line: #cad5ce;
+  --paper: #f6f7f1;
+  font: 16px/1.5 "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+a, .plain, summary { color: var(--teal); text-underline-offset: 4px; }
+header { background: #103b3b; color: white; }
+.bar, main { width: min(1120px, 92%); margin: auto; }
+.bar, nav, .account, .heading, .filters, .actions {
+  display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap;
+}
+.bar { min-height: 74px; padding: 12px 0; }
+.bar a, .bar .plain { color: white; }
+.brand { display: flex; gap: .6rem; align-items: center; font-weight: 750; font-size: 1.2rem; text-decoration: none; }
+.mark { display: grid; place-items: center; width: 31px; height: 31px; background: #d4e7a8; color: #123c37; border-radius: 6px; }
+nav { margin-left: 1.3rem; }
+nav a { text-decoration: none; padding: .25rem 0; }
+nav a[aria-current], nav a:hover { box-shadow: 0 2px #c9e7a5; }
+.account { margin-left: auto; font-size: .9rem; }
+main { padding: clamp(28px, 5vw, 68px) 0 50px; }
+h1, h2, p { margin: 0; }
+h1 { font: 500 clamp(2rem, 4.3vw, 3.75rem)/1.05 Georgia, serif; letter-spacing: -.035em; }
+h2 { font-size: 1.18rem; line-height: 1.25; }
+.heading { justify-content: space-between; margin-bottom: 29px; }
+.heading p, .panel > p, .record p, .muted, .empty p { color: var(--muted); margin-top: .55rem; }
+button, .button { display: inline-block; border: 0; border-radius: 7px; background: var(--teal); color: white; padding: .67rem 1rem; font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; }
+button:hover, .button:hover { filter: brightness(.91); }
+.plain { padding: 0; background: none; text-decoration: underline; font: inherit; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr)); gap: 17px; }
+.card, .record, .panel, .empty { background: white; border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+.card { border-top: 4px solid #428378; }
+.card h2 { margin: 16px 0 11px; font-size: 1.5rem; }
+.number, .eyebrow { font: 600 .8rem/1.35 Consolas, monospace; color: var(--muted); letter-spacing: .05em; }
+.status { display: inline-block; border-radius: 20px; background: #e2f0dd; color: #235536; padding: .23rem .68rem; font-size: .83rem; font-weight: 600; }
+.off { background: #ecece8; color: #505952; }
+.busy { background: #fff0d6; color: #804c0e; }
+.cardlink, .card .foot { display: block; border-top: 1px solid var(--line); padding-top: 14px; margin-top: 22px; }
+.cardlink { font-weight: 600; }
+.cardlink span { float: right; }
+.filters { background: #e8eee6; border-radius: 10px; padding: 16px 20px; align-items: end; margin-bottom: 22px; }
+.filters > a { align-self: end; padding-bottom: .65rem; }
+label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: .3rem; }
+input, select { width: 100%; padding: .65rem; font: inherit; border: 1px solid #93a6a1; border-radius: 6px; background: #fff; color: var(--ink); }
+.records { display: grid; gap: 10px; }
+.record { display: grid; grid-template-columns: 1.25fr 1fr .8fr .6fr; align-items: center; gap: 16px; }
+.record h2 { margin-top: 5px; }
+.record p { overflow-wrap: anywhere; }
+.times span, .times strong { display: block; }
+.actions { align-items: start; flex-direction: column; gap: .35rem; font-size: .9rem; }
+summary { cursor: pointer; }
+.danger { margin-top: 5px; background: #923f3c; }
+.empty { padding: 32px; }
+.panel { max-width: 610px; padding: clamp(22px, 4vw, 40px); margin: 12px 0; }
+.panel h1 { font-size: clamp(2rem, 4vw, 2.7rem); }
+.login { margin: 0 auto; max-width: 480px; }
+.login .eyebrow { margin: 0 0 .8rem; }
+.stack { display: grid; gap: 15px; margin-top: 21px; }
+.stack button { justify-self: start; }
+.notice, .errorlist { padding: .7rem 1rem; border-radius: 7px; }
+.notice { background: #e3eedc; margin-bottom: 20px; }
+.errorlist { list-style: none; background: #fff1ed; color: #8a3326; margin: .3rem 0; }
+@media (max-width: 720px) {
+  .record { grid-template-columns: 1fr 1fr; }
+  nav { margin: 0; }
+  .bar { gap: .8rem; }
+}
+@media (max-width: 480px) {
+  .record { grid-template-columns: 1fr; }
+  .filters > div { width: 100%; }
+  .account { margin-left: 0; }
+}

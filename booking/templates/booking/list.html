@@ -1,0 +1,31 @@
+{% extends "booking/base.html" %}
+{% block title %}Мои бронирования{% endblock %}
+{% block content %}
+<div class="heading">
+  <div><h1>Мои бронирования</h1><p>Подтверждённые и отменённые записи · московское время</p></div>
+  <a class="button" href="{% url 'reservation_create' %}">Создать бронь</a>
+</div>
+<form method="get" class="filters">
+  {% for field in filters %}<div><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}</div>{% endfor %}
+  <button>Применить</button><a href="{% url 'reservation_list' %}">Сбросить</a>
+</form>
+<div class="records">
+{% for item in items %}
+  <article class="record">
+    <div><span class="number">{{ item.equipment.inventory_number }} · № {{ item.pk }}</span>
+      <h2>{{ item.equipment.name }}</h2><p>{{ item.purpose }}</p></div>
+    <div class="times"><strong>{{ item.start|date:"d.m.Y" }} · {{ item.start|date:"H:i" }}</strong>
+      <span>до {{ item.end|date:"d.m.Y" }} · {{ item.end|date:"H:i" }}</span></div>
+    <div><span class="status {% if not item.confirmed %}off{% endif %}">{% if item.confirmed %}Подтверждена{% else %}Отменена{% endif %}</span></div>
+    <div class="actions">
+      <a href="{% url 'reservation_edit' item.pk %}">Изменить</a>
+      {% if item.confirmed %}<form method="post" action="{% url 'reservation_cancel' item.pk %}">{% csrf_token %}<button class="plain">Отменить</button></form>{% endif %}
+      <details><summary>Удалить</summary><form method="post" action="{% url 'reservation_delete' item.pk %}">
+        {% csrf_token %}<button class="danger">Удалить навсегда</button></form></details>
+    </div>
+  </article>
+{% empty %}
+  <div class="empty"><h2>Записей нет</h2><p>Создайте бронь или измените фильтр.</p></div>
+{% endfor %}
+</div>
+{% endblock %}

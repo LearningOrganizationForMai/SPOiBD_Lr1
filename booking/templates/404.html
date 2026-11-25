@@ -1,0 +1,7 @@
+{% extends "booking/base.html" %}
+{% block title %}Страница недоступна{% endblock %}
+{% block content %}
+<section class="panel"><p class="eyebrow">Ошибка 404</p><h1>Страница недоступна</h1>
+<p>Проверьте адрес или вернитесь к своим записям.</p>
+<a class="button" href="{% url 'reservation_list' %}">Мои бронирования</a></section>
+{% endblock %}
