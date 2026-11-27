@@ -2,7 +2,7 @@
 {% block title %}Мои бронирования{% endblock %}
 {% block content %}
 <div class="heading">
-  <div><h1>Мои бронирования</h1><p>Подтверждённые и отменённые записи · московское время</p></div>
+  <div><h1>Мои бронирования</h1><p>Подтверждённые и отменённые записи</p></div>
   <a class="button" href="{% url 'reservation_create' %}">Создать бронь</a>
 </div>
 <form method="get" class="filters">
@@ -12,7 +12,7 @@
 <div class="records">
 {% for item in items %}
   <article class="record">
-    <div><span class="number">{{ item.equipment.inventory_number }} · № {{ item.pk }}</span>
+    <div><span class="number">{{ item.equipment.inventory_number }}</span>
       <h2>{{ item.equipment.name }}</h2><p>{{ item.purpose }}</p></div>
     <div class="times"><strong>{{ item.start|date:"d.m.Y" }} · {{ item.start|date:"H:i" }}</strong>
       <span>до {{ item.end|date:"d.m.Y" }} · {{ item.end|date:"H:i" }}</span></div>

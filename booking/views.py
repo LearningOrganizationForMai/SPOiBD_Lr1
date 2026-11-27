@@ -25,9 +25,11 @@ def reservation_list(request):
     items = Reservation.objects.filter(user=request.user).select_related("equipment")
     filters = FilterForm(request.GET)
     if filters.is_valid():
-        if equipment := filters.cleaned_data["equipment"]:
+        equipment = filters.cleaned_data["equipment"]
+        if equipment:
             items = items.filter(equipment=equipment)
-        if day := filters.cleaned_data["day"]:
+        day = filters.cleaned_data["day"]
+        if day:
             items = items.filter(start__date=day)
     else:
         items = items.none()

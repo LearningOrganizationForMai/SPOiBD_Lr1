@@ -17,7 +17,7 @@ class ReservationForm(forms.ModelForm):
 class CancelForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ()  # Статус устанавливает сервер. Из POST поля не принимаются.
+        fields = ()
 
 
 class FilterForm(forms.Form):

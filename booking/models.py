@@ -39,7 +39,6 @@ class Reservation(models.Model):
         return f"{self.equipment} — {self.purpose}"
 
     def clean(self):
-        super().clean()
         if self.start and self.end and self.start >= self.end:
             raise ValidationError({"end": "Окончание должно быть позже начала."})
         if not self.confirmed or not self.equipment_id:
