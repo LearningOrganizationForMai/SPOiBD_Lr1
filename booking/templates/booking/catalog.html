@@ -2,7 +2,7 @@
 {% block title %}Каталог{% endblock %}
 {% block content %}
 <div class="heading">
-  <div><h1>Каталог оборудования</h1><p>Доступность устройств сейчас · московское время</p></div>
+  <div><h1>Каталог оборудования</h1></div>
   {% if user.is_staff %}<a class="button" href="{% url 'admin:booking_equipment_add' %}">Добавить устройство</a>{% endif %}
 </div>
 <div class="cards">

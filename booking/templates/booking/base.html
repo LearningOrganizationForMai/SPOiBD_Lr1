@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Практикум{% endblock %} · Бронирование оборудования</title>
+  <title>{% block title %}Практикум{% endblock %} Бронирование оборудования</title>
   <link rel="stylesheet" href="{% static 'booking/style.css' %}">
 </head>
 <body>
   <header><div class="bar">
-    <a class="brand" href="{% url 'catalog' %}"><span class="mark" aria-hidden="true">П</span>Практикум</a>
+    <a class="brand" href="{% url 'catalog' %}">Практикум</a>
     {% if user.is_authenticated %}
       <nav aria-label="Основная навигация">
         <a href="{% url 'catalog' %}" {% if request.resolver_match.url_name == 'catalog' %}aria-current="page"{% endif %}>Каталог</a>
